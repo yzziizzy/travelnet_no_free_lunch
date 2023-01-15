@@ -160,7 +160,10 @@ minetest.register_node("travelnet:elevator", {
 	end,
 
 	on_destruct = function(pos)
-		minetest.remove_node(vector.add(pos, { x=0, y=1, z=0 }))
+		local above = vector.add(pos, vector.new(0, 1, 0))
+		if minetest.get_node(above).name == "travelnet:hidden_top" then
+			minetest.remove_node(above)
+		end
 	end
 })
 
