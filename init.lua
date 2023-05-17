@@ -25,7 +25,6 @@ end
 travelnet = {}
 
 travelnet.player_formspec_data = {}
-travelnet.targets = {}
 travelnet.path = minetest.get_modpath(minetest.get_current_modname())
 
 local function mod_dofile(filename)
@@ -135,9 +134,9 @@ if travelnet.enable_abm then
 end
 
 -- upon server start, read the savefile
-travelnet.restore_data()
 travelnet.player_formspec_data = nil
 
 if minetest.get_modpath("mtt") and mtt.enabled then
 	mod_dofile("mtt")
+	mod_dofile("persistence.spec")
 end
