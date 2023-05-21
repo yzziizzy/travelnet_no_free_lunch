@@ -74,6 +74,9 @@ return function (node_info, fields, player)
 		timestamp = creation_timestamp
 	}
 
+	-- save the updated network data
+	travelnet.set_travelnets(owner_name, travelnets)
+
 	-- do we have a new node to set up? (and are not just reading from a safefile?)
 	if meta then
 		minetest.chat_send_player(player_name,
@@ -91,9 +94,6 @@ return function (node_info, fields, player)
 					"on network '@2' (owned by @3)" .. " " ..
 					"ready for usage.",
 					tostring(station_name), tostring(station_network), tostring(owner_name)))
-
-		-- save the updated network data in a savefile over server restart
-		travelnet.set_travelnets(owner_name, travelnets)
 
 		return true, { formspec = travelnet.formspecs.primary, options = {
 			station_name = station_name,

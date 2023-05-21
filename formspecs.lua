@@ -128,7 +128,6 @@ function travelnet.formspecs.primary(options, player_name)
 
 	-- collect all station names in a table
 	local stations = travelnet.get_ordered_stations(options.owner_name, options.station_network, options.is_elevator)
-
 	-- if there are only 8 stations (plus this one), center them in the formspec
 	if #stations < 10 then
 		x = 4
@@ -171,7 +170,13 @@ function travelnet.formspecs.primary(options, player_name)
 				("button[%f,%f;1,0.5;open_door;<>]label[%f,%f;%s]")
 						:format(x, y + 2.5, x + 0.9, y + 2.35, k)
 		elseif options.is_elevator then
-			local network = travelnet.get_or_create_network(options.owner_name, options.station_network)
+			local travelnets = travelnet.get_travelnets(options.owner_name)
+			local network = travelnets[options.station_network]
+			if not network then
+				travelnets[options.station_network] = {}
+				travelnet.set_travelnets(options.owner_name, travelnets)
+			end
+
 			formspec = formspec ..
 				("button[%f,%f;1,0.5;target;%s]label[%f,%f;%s]")
 						:format(x, y + 2.5, minetest.formspec_escape(tostring(network[k].nr)), x + 0.9, y + 2.35, k)
