@@ -24,6 +24,7 @@ end
 
 travelnet = {}
 
+travelnet.log = function(c, msg) minetest.log(c, "[travelnet] " .. msg) end
 travelnet.player_formspec_data = {}
 travelnet.path = minetest.get_modpath(minetest.get_current_modname())
 

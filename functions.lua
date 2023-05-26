@@ -166,6 +166,8 @@ function travelnet.get_ordered_stations(owner_name, network_name, is_elevator)
 		end
 		-- TODO: hacky workaround for setting the "nr" field on the stations
 		-- should be done on elevator placement instead
+		travelnet.log("action", "creating ad-hoc elevator fields for player '" .. owner_name ..
+			"' and network '" .. network_name .. "'")
 		travelnet.set_travelnets(owner_name, travelnets)
 	else
 		-- sort the table according to the timestamp (=time the station was configured)

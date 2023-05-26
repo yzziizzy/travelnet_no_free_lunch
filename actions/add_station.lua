@@ -75,6 +75,8 @@ return function (node_info, fields, player)
 	}
 
 	-- save the updated network data
+	travelnet.log("action", "adding station '" .. station_name .. "' to network '" .. station_network ..
+		"' for player '" .. owner_name .. "'")
 	travelnet.set_travelnets(owner_name, travelnets)
 
 	-- do we have a new node to set up? (and are not just reading from a safefile?)

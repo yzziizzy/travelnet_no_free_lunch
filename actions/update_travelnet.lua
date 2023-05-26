@@ -137,6 +137,10 @@ return function (node_info, fields, player)
 		new_station_network = fields.station_network
 		new_station_name = fields.station_name
 
+		travelnet.log("action", "changed station '" .. station_name .. "' to '" .. fields.station_name ..
+			"' moved network from '" .. station_network .. "' to '" .. fields.station_network .. "'" ..
+			"' from player '" .. owner_name .. "' to '" .. fields.owner_name .. "'")
+
 		travelnet.set_travelnets(owner_name, old_travelnets)
 		travelnet.set_travelnets(fields.owner_name, new_travelnets)
 
@@ -190,6 +194,10 @@ return function (node_info, fields, player)
 		new_station_network = fields.station_network
 		new_station_name = fields.station_name
 
+		travelnet.log("action", "changed station '" .. station_name .. "' to '" .. fields.station_name ..
+			"' moved network from '" .. station_network .. "' to '" .. fields.station_network .. "'" ..
+			"' for player '" .. owner_name .. "'")
+
 		travelnet.set_travelnets(owner_name, travelnets)
 
 	else
@@ -224,6 +232,11 @@ return function (node_info, fields, player)
 				station_name, fields.station_name, station_network))
 
 		new_station_name = fields.station_name
+
+		travelnet.log("action", "changed station '" .. station_name .. "' to '" .. fields.station_name ..
+			"' on network '" .. station_network .. "'" ..
+			"' for player '" .. owner_name .. "'")
+
 		travelnet.set_travelnets(owner_name, travelnets)
 	end
 

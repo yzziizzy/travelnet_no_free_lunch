@@ -173,6 +173,8 @@ function travelnet.formspecs.primary(options, player_name)
 			local travelnets = travelnet.get_travelnets(options.owner_name)
 			local network = travelnets[options.station_network]
 			if not network then
+				travelnet.log("action", "creating new elevator network for '" .. options.owner_name ..
+					"' and station '" .. options.station_network .. "'")
 				travelnets[options.station_network] = {}
 				travelnet.set_travelnets(options.owner_name, travelnets)
 			end

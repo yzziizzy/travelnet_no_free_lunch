@@ -39,6 +39,8 @@ return function (node_info, _, player)
 				S("Station '@1'" .. " " ..
 					"has been reattached to the network '@2'.", station_name, station_network))
 
+		travelnet.log("action", "repared station '" .. owner_name .. "' on network '" .. station_network ..
+			"' for player '" .. owner_name .. "'")
 		travelnet.set_travelnets(owner_name, travelnets)
 	end
 	return true, { formspec = travelnet.formspecs.primary }

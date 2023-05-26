@@ -38,6 +38,7 @@ function travelnet.get_travelnets(playername)
 	local json = storage:get_string(playername)
 	if not json or json == "" or json == "null" then
 		-- default to empty object
+		travelnet.log("action", "get_travelnets: player '" .. playername .. "' doesn't have an entry, creating one")
 		json = "{}"
 	end
 	return minetest.parse_json(json)
@@ -45,5 +46,6 @@ end
 
 -- saves the player's modified travelnets
 function travelnet.set_travelnets(playername, travelnets)
+	travelnet.log("action", "set_travelnets: persisting travelnets for player '" .. playername .. "'")
 	storage:set_string(playername, minetest.write_json(travelnets))
 end
