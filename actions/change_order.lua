@@ -64,7 +64,7 @@ return function (node_info, fields, player)
 			-- store the changed order
 			travelnet.log("action", "saving changed order for network '" .. node_info.props.station_network ..
 				"' player '" .. node_info.props.owner_name .. "'")
-			travelnet.set_travelnets(player_name, travelnets)
+			travelnet.set_travelnets(node_info.props.owner_name, travelnets)
 			return true, { formspec = travelnet.formspecs.primary }
 		end
 	end
