@@ -94,7 +94,12 @@ return function (node_info, fields, player)
 
 		travelnet.remove_box_message(oldmetadata, player)
 	else
-		player:move_to(vector.add(target_pos, player_model_vec), false)
+		-- add player model offset
+		target_pos = vector.add(target_pos, player_model_vec)
+		-- add travelnet bottom plate offset
+		target_pos = vector.add(target_pos, { x=0, y=0.05, z=0 })
+
+		player:set_pos(target_pos)
 		travelnet.rotate_player(target_pos, player)
 	end
 
