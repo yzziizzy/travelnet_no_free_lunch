@@ -23,5 +23,5 @@ travelnet.allow_travel (allow players to use other networks) bool true
 #   Allows a custom attach priv
 travelnet.attach_priv (set a custom 'travelnet_attach' priv) string travelnet_attach
 
-#   Allows n custom remove priv
+#   Allows a custom remove priv
 travelnet.remove_priv (set a custom 'travelnet_remove' priv) string travelent_remove
