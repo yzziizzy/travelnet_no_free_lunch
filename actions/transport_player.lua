@@ -22,7 +22,22 @@ return function (node_info, fields, player)
 	end
 
 	local player_name = player:get_player_name()
-
+	
+	-- calculate the toll
+	local x1 = node_info.pos.x - target_station.pos.x
+	local y1 = node_info.pos.y - target_station.pos.y
+	local z1 = node_info.pos.z - target_station.pos.z
+	local dist = math.sqrt(x1*x1 + y1*y1 + z1* z1)
+	local cost = math.ceil(dist / 100)
+	
+	-- pay the toll
+	local pinv = player:get_inventory()
+	local taken = pinv:remove_item("main", "default:gold_ingot "..cost)
+	
+	if taken:get_count() == 0 then
+		return false, S("Too poor: cost = @1", cost) 
+	end
+	
 	if not travelnet.allow_travel(
 		player_name,
 		node_info.props.owner_name,

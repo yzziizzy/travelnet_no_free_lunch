@@ -82,7 +82,7 @@ local function on_interact(pos, _, player)
 	travelnet.show_current_formspec(pos, meta, player_name)
 end
 
-minetest.register_node("travelnet:elevator", {
+minetest.register_node(":travelnet:elevator", {
 	description = S("Elevator"),
 	drawtype = "mesh",
 	mesh = "travelnet_elevator.obj",

@@ -64,7 +64,7 @@ if travelnet.travelnet_cleanup_lbm then
 end
 
 -- invisible node to place inside top of travelnet box and elevator
-minetest.register_node("travelnet:hidden_top", {
+minetest.register_node(":travelnet:hidden_top", {
 	drawtype = "airlike",
 	paramtype = "light",
 	sunlight_propagates = true,
@@ -77,7 +77,7 @@ minetest.register_node("travelnet:hidden_top", {
 
 
 if travelnet.travelnet_effect_enabled then
-	minetest.register_entity("travelnet:effect", {
+	minetest.register_entity(":travelnet:effect", {
 		hp_max = 1,
 		physical = false,
 		weight = 5,

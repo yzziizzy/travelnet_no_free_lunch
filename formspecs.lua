@@ -163,6 +163,7 @@ function travelnet.formspecs.primary(options, player_name)
 			x = x + 4
 			y = 0
 		end
+		
 
 		-- check if there is an elevator door in front that needs to be opened
 		if k == options.station_name then
@@ -183,9 +184,20 @@ function travelnet.formspecs.primary(options, player_name)
 				("button[%f,%f;1,0.5;target;%s]label[%f,%f;%s]")
 						:format(x, y + 2.5, minetest.formspec_escape(tostring(network[k].nr)), x + 0.9, y + 2.35, k)
 		else
+			local travelnets = travelnet.get_travelnets(options.owner_name)
+			local network = travelnets[options.station_network]
+			local target_station = network[k]
+			
+			local pos = player_formspec_data[player_name].pos
+			local x1 = pos.x - target_station.pos.x
+			local y1 = pos.y - target_station.pos.y
+			local z1 = pos.z - target_station.pos.z
+			local dist = math.sqrt(x1*x1 + y1*y1 + z1* z1)
+			local cost = math.ceil(dist / 100)
+		
 			formspec = formspec ..
-				("button[%f,%f;4,0.5;target;%s]")
-						:format(x, y + 2.5, minetest.formspec_escape(k))
+				("button[%f,%f;4,0.5;target;%s]label[%f,%f;Cost: %s]")
+						:format(x, y + 2.5, minetest.formspec_escape(k), x - 1, y + 2.5, cost)
 		end
 
 		y = y+1
